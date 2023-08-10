@@ -5,15 +5,14 @@ public class Cliente {
 	private String nome;
 	private String genero;
 	private int idade;
-	private long cpf;
+	private String email;
 	private long telefone;
 
-	public Cliente(String nome, String genero, int idade, long cpf, long telefone) {
-		super();
+	public Cliente(String nome, String genero, int idade, String email, long telefone) {
 		this.nome = nome;
 		this.genero = genero;
 		this.idade = idade;
-		this.cpf = cpf;
+		this.email = email;
 		this.telefone = telefone;
 	}
 
@@ -41,12 +40,12 @@ public class Cliente {
 		this.idade = idade;
 	}
 
-	public long getCpf() {
-		return cpf;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setCpf(long cpf) {
-		this.cpf = cpf;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public long getTelefone() {
@@ -58,32 +57,31 @@ public class Cliente {
 	}
 
 	public void visualizar() {
-		System.out.println(this.formatarNome() + this.formatarGenero() + this.formatarIdade() + this.formatarCpf()
+
+		final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
+		final String TEXT_BLACK_BOLD = "\033[1;30m";
+
+		System.out.println(
+				TEXT_BLACK_BOLD + ANSI_PURPLE_BACKGROUND + "************************** CLIENTE **************************");
+
+		System.out.println(this.formatarNome() + this.formatarGenero() + this.formatarIdade() + this.formatarEmail()
 				+ this.formatarTelefone());
 	}
 
 	public String formatarNome() {
-		return "\n Nome: " + nome;
+		return "Nome: " + nome+"                         ";
 	}
 
 	public String formatarGenero() {
-		return "\n Genero: " + genero;
+		return "\n Genero: " + genero+"                         ";
 	}
 
 	public String formatarIdade() {
-		return "\n Idade: " + idade;
+		return "\n Idade: " + idade+"                         ";
 	}
 
-	public String formatarCpf() {
-
-		// Converter long para string
-		String cpfString = Long.toString(this.cpf);
-
-		// Formata o cpf para o padrão XXX.XXX.XXX-XX
-		String cpfFormatado = cpfString.replaceFirst("(\\d{3})(\\d{3})(\\d{3})(\\d+)", "$1.$2.$3-$4");
-
-		// retorna o telefone formatado para exibição
-		return "\n CPF: " + cpfFormatado;
+	public String formatarEmail() {
+		return "\n Email: " + email+"                         ";
 	}
 
 	public String formatarTelefone() {
@@ -95,7 +93,7 @@ public class Cliente {
 		String teleoneFormatado = telefoneString.replaceFirst("(\\d{2})(\\d{1})(\\d{4})(\\d+)", "($1) $2 $3-$4");
 
 		// retorna o telefone formatado para exibição
-		return "\n Telefone: " + teleoneFormatado;
+		return "\n Telefone: " + teleoneFormatado+"                         ";
 	}
 
 }
